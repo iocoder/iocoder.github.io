@@ -1,0 +1,459 @@
+<html>
+    <head>
+        <title>
+            How to Compile a C Program
+        </title>
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+    </head>
+    <body>
+        <h4 class="headinfo">
+            <a href="../index.html">Mostafa Abdelaziz</a>
+            <br />
+            525 Bloor St. East,
+            <br />
+            Toronto, ON M4W 1J1
+            <br />
+            +1 (778) 788-0657
+            <br />
+            iocoder@aol.com
+            <br />
+        </h4>
+        <h4 class="date">
+            Apr 15th, 2014
+        </h4>
+        <h1 class="title">
+            How to Compile a C Program
+        </h1>
+        <p>
+            For the <a href="#footnote1">assembler project*</a> this is how you write
+            code in C and compile it using gcc (or any other compiler)
+            and how we produce the "pass1" command.
+        </p>
+        <p>
+            First of all, you create a directoy with the name "pass1".
+            Inside pass1, create the file "pass1.c". open pass1.c
+            with your favorite text editor.
+        </p>
+        <p>
+            <B>For Windows users, you have:</B>
+        </p>
+        <ul>
+            <li>
+                <p>Notepad</p>
+                <p><img src="../img/notepad.png" /></p>
+            </li>
+            <li>
+                <p>Wordpad (but save as txt instead of RTF)</p>
+                <p><img src="../img/wordpad.png" /></p>
+            </li>
+            <li>
+                <p>Edit (from command prompt)</p>
+                <p><img src="../img/edit.png" width="480" /></p>
+            </li>
+            <li>
+                <p>You may download notepad++</p>
+                <p><img src="../img/notepadpp.gif" /></p>
+            </li>
+        </ul>
+        <p>
+            <B>For Apple users:</B>
+        </p>
+        <ul>
+            <li>
+                <p>Textmate</p>
+                <p><img src="../img/textmate.png" width="480" /></p>
+            </li>
+            <li>
+                <p>There is a "vim" for Mac OS X (macvim)</p>
+                <p><img src="../img/macvim.png" width="480" /></p>
+            </li>
+        </ul>
+        <p>
+            <B>For GNU/Linux users:</B>
+        </p>
+        <ul>
+            <li>
+                <p>nano</p>
+                <p><img src="../img/nano.png" width="480" /></p>
+            </li>
+            <li>
+                <p>vi</p>
+                <p><img src="../img/vi.png" width="480" /></p>
+            </li>
+            <li>
+                <p>vim</p>
+                <p><img src="../img/vim.png" width="480" /></p>
+            </li>
+            <li>
+                <p>gvim</p>
+                <p><img src="../img/gvim.png" width="480" /></p>
+            </li>
+            <li>
+                <p>
+                    GNU Emacs (Generally Not Used Except by
+                    Middle-Aged Computer Scientists) editor
+                </p>
+                <p><img src="../img/emacs.png" width="480" /></p>
+            </li>
+            <li>
+                <p>gedit</p>
+                <p><img src="../img/gedit.png" width="480" /></p>
+            </li>
+            <li>
+                <p>medit</p>
+                <p><img src="../img/medit.jpg" width="480" /></p>
+            </li>
+            <li>
+                <p>kate</p>
+                <p><img src="../img/kate.png" width="480" /></p>
+            </li>
+            <li>
+                <p>kwrite</p>
+                <p><img src="../img/kwrite.png" width="480" /></p>
+            </li>
+        </ul>
+        <h2 class="subtitle">Getting started:</h3>
+        <p>In pass1.c, write this:</p>
+        <p><font color="#000099">#include &lt;stdio.h&gt;</font></p>
+        <p>
+            This line includes the standard I/O library header, where
+            printf() and scanf() are defined.
+        <p>
+        <p>Then you write:</p>
+        <p>
+            <font color="#FF6633">int</font>
+            <font color="#990000">main</font><b><font
+            color="#663300">(</font></b><font color="#FF6633">int</font>
+            argc<b><font color="#663300">,</font></b>
+            <font color="#FF6633">char</font>
+            <b><font
+            color="#663300">*</font></b>argv<b><font
+            color="#663300">[]) {</font></b>
+            <br/>
+            <font color="#FF0000">&nbsp&nbsp&nbsp&nbspreturn</font>
+            <font color="#999900"> 0</font><b><font
+            color="#663300">;<br/>}</font></b>
+        </p>
+        <p>
+            As you can see, main() returns an integer (int). This
+            integer is the "error code" of your program. It is
+            returned to the parent process. If the value returned
+            is 0, this means that the child program (our program)
+            has terminated successfully. Any other value
+            means that some error happened, and the parent process
+            should take this error into consideration.
+        </p>
+        <p>
+            argc and argv are passed to the program by the OS...
+        </p>
+        <p>
+            argc is the count of arguments passed to the program.
+            For example, if our program is executed using this
+            command:
+        </p>
+        <p>
+            $ ./pass1 hello.s
+        </p>
+        <p>
+            In this case argc = 2, and the arguments are "./pass1"
+            and "hello.s".
+        </p>
+        <p>
+            It is required in the assignment that ./pass1 must
+            take one argument, which is the file name of
+            the assembly file which is to be translated. Therefore,
+            we must check argc and make sure that it is 2:
+        </p>
+        <p>
+            <font color="#FF0000">
+            if</font><b><font color="#663300">
+            (</font></b>argc<b><font color="#663300"> !=</font></b><font
+            color="#999900"> 2</font><b><font color="#663300">) {</font></b>
+            <br/>
+            &nbsp&nbsp&nbsp&nbspfprintf<b><font
+            color="#663300">(</font></b>stderr<b><font
+            color="#663300">,</font></b><font color="#009900"> "Error:
+            Invalid arguments.\n"</font><b><font
+            color="#663300">);</font></b><font color="#FF0000">
+            <br />
+            &nbsp&nbsp&nbsp&nbspreturn</font><b><font
+            color="#663300">
+            -</font></b><font color="#999900">1</font><b><font
+            color="#663300">;</font></b><i><font color="#999999">
+            /* inform the parent process of the error */
+            </font></i><b><font color="#663300">
+            <br />
+            }</font></b>
+        </p>
+        <p>
+            argv is an array of pointers to the strings of the actual
+            arguments. argv[0] is a pointer to "./pass1" and
+            argv[1] is a pointer to "hello.s". To print argv[1]:
+        </p>
+        <p>
+            printf<b><font
+            color="#663300">(</font></b><font color="#009900">"The
+            assembly file is: %s\n"</font><b><font
+            color="#663300">,</font></b> argv<b><font
+            color="#663300">[</font></b><font
+            color="#999900">1</font><b><font
+            color="#663300">]);</font></b>
+        </p>
+        <p>
+            Now the final code is:
+        </p>
+        <p>
+            <font color="#000099">#include &lt;stdio.h&gt;</font>
+            <br />
+            <br />
+            <font color="#FF6633">int</font>
+            <font color="#990000">main</font><b><font
+            color="#663300">(</font></b><font color="#FF6633">int</font>
+            argc<b><font color="#663300">,</font></b>
+            <font color="#FF6633">char</font>
+            <b><font
+            color="#663300">*</font></b>argv<b><font
+            color="#663300">[]) {</font></b>
+            <br />
+            <font color="#FF0000">
+            &nbsp&nbsp&nbsp&nbspif</font><b><font color="#663300">
+            (</font></b>argc<b><font color="#663300"> !=</font></b><font
+            color="#999900"> 2</font><b><font color="#663300">) {</font></b>
+            <br />
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspfprintf<b><font
+            color="#663300">(</font></b>stderr<b><font
+            color="#663300">,</font></b><font color="#009900"> "Error:
+            Invalid arguments.\n"</font><b><font
+            color="#663300">);</font></b><font color="#FF0000">
+            <br />
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspreturn</font><b><font
+            color="#663300">
+            -</font></b><font color="#999900">1</font><b><font
+            color="#663300">;</font></b><i><font color="#999999">
+            /* inform the parent process of the error */
+            </font></i><b><font color="#663300">
+            <br />
+            &nbsp&nbsp&nbsp&nbsp}</font></b>
+            <br />
+            &nbsp&nbsp&nbsp&nbspprintf<b><font
+            color="#663300">(</font></b><font color="#009900">"The
+            assembly file is: %s\n"</font><b><font
+            color="#663300">,</font></b> argv<b><font
+            color="#663300">[</font></b><font
+            color="#999900">1</font><b><font
+            color="#663300">]);</font></b>
+            <br />
+            <font color="#FF0000">&nbsp&nbsp&nbsp&nbspreturn</font>
+            <font color="#999900"> 0</font><b><font
+            color="#663300">;<br/>}</font></b>
+        </p>
+        <h2 class="subtitle">Running the compiler:</h2>
+        <p>Please first save the file (never forget to do this!).</p>
+        <p>There exist many free compilers for C.</p>
+        <p><b>For Windows users:</b></p>
+        <ul><li><p>
+        <a href="http://www.mingw.org/">Mingw project</a>
+        is the easiest way.</p></li></ul>
+        <p><b>For Mac OS X:</b></p>
+        <ul>
+            <li>
+                <p>
+                    gcc for mac (Access
+                    "<a
+       href="https://developer.apple.com/downloads/index.action">Apple's
+       developer page</a>"
+                    on the web and register an account; In Apple developer
+                    page, under "Developer Tools" category, find
+                    "Command Line Tools for Xcode". Download and install it).
+                </p>
+            </li>
+        </ul>
+        <p><b>For GNU/Linux, BSD, and other UNIXes:</b></p>
+        <ul>
+            <li>
+                <p>
+                    gcc (many GNU/Linux distribution have gcc
+                    installed by default).
+                </p>
+            </li>
+            <li>
+                <p>
+                    clang
+                </p>
+            </li>
+        </ul>
+        <p>To run the compiler:</p>
+        <p><b>For Windows users:</b></p>
+        <ol>
+            <li>
+                <p>
+                    Open the command prompt (cmd.exe on Windows NT family).
+                </p>
+            </li>
+            <li>
+                <p>
+                    Change to the "pass1" directoy:
+                </p>
+                <p>
+                    > chdir /d "C:\Path\to\pass1\directory"
+                </p>
+            </li>
+            <li>
+                <p>
+                    compile pass1.c:
+                </p>
+                <p>
+                    > mingw pass1.c -o pass1.exe
+                </p>
+                <p>
+                    Notice that "-o pass1.exe" tells the
+                    compiler that the output file should be called
+                    "pass1.exe" as required in the assignment.
+                    If the above command failed with (Cannot find mingw),
+                    then you need to add Mingw directory to %PATH%
+                    environment variable (deal with it).
+                </p>
+            </li>
+            <li>
+                <p>
+                    After pass1.c is compiled, you can run pass1.exe by:
+                </p>
+                <p>
+                    > pass1 hello.s
+                </p>
+                <p>
+                    It should print "The assembly file is: hello.s" and exit.
+                </p>
+            </li>
+        </ol>
+        <p><b>For UNIX:</b></p>
+        <ol>
+            <li>
+                <p>
+                    Open your terminal emulator.
+                </p>
+            </li>
+            <li>
+                <p>
+                    Change to the "pass1" directory:
+                </p>
+                <p>
+                    $ cd /path/to/pass1/directory
+                </p>
+            </li>
+            <li>
+                <p>
+                    Compile pass1.c:
+                </p>
+                <p>
+                    $ gcc pass1.c -o pass1
+                </p>
+            </li>
+            <li>
+                <p>
+                    execute pass1:
+                </p>
+                <p>
+                    $ ./pass1 hello.s
+                </p>
+                <p>
+                    Too simple!
+                </p>
+                <p>
+                    <p style="text-align:center">
+                    <img src="../img/compile.png" width="800" /></a>
+                    </p>
+                </p>
+            </li>
+        </ol>
+        <h3>Creating Makefile:</h3>
+        <p>
+            As you may have noticed, everytime you want to test your
+            program, you have to run "gcc pass1.c -o pass1" first, then
+            run it using "./pass1 hello.s"... you can make things simpler
+            by creating a Makefile.
+        </p>
+        <p>
+            First, you need to have the "make" utility installed.
+        </p>
+        <p><b>For Windows:</b></p>
+        <ul>
+            <li>
+                <p>
+                    Visit
+                    <a
+                    href="http://gnuwin32.sourceforge.net/packages/make.htm"
+                    >http://gnuwin32.sourceforge.net/packages/make.htm</a>
+                </p>
+            </li>
+        </ul>
+        <p><b>For Mac OS X:</b></p>
+        <ul>
+            <li>
+                <p>
+                    "make" is included in the "Command Line Tools" package
+                    that you have already installed.
+                </p>
+            </li>
+        </ul>
+        <p><b>For other UNIXes:</b></p>
+        <ul>
+            <li>
+                <p>
+                    "make" is usually installed by default.
+                </p>
+            </li>
+        </ul>
+        <p>
+            In "pass1" directoy, create a file
+            with the name "Makefile". Open the file with your favorite
+            text editor and write:
+        </p>
+        <p>
+            <font color="#0000FF">all:</font>
+            <br />
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspgcc *.c -o pass1
+            <br />
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp./pass1 hello.s
+        </p>
+        <p>
+            If Windows, you should write:
+        </p>
+        <p>
+            <font color="#0000FF">all:</font>
+            <br />
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspmingw *.c -o pass1.exe
+            <br />
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp./pass1 hello.s
+        </p>
+        <p>
+            Note that all the lines should be preceded by a tabulator
+            "\n" except the "all:" line. The file should end
+            with an empty line. Note also that "*.c" means "all
+            files with names terminating with .c". this is useful
+            in case your project has many C files and you want
+            to compile them together.
+        </p>
+        <p>
+            Now save the Makefile. From terminal, under "pass1"
+            directory, execute:
+        </p>
+        <p>
+            $ make
+        </p>
+        <p>
+            This will execute the two commands automatically.
+        </p>
+        <p>
+            To learn more about Makefile language, please visit:
+            <a href="http://www.gnu.org/software/make/manual/make.html"
+            >http://www.gnu.org/software/make/manual/make.html</a>
+        </p>
+        <hr />
+        <p>
+            <a id="footnote1" />
+            <b><i>* This is a very old article targeting my classmates at school 
+                    to make fun of them</i></b>.
+        </p>
+    </body>
+</html>

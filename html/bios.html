@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <title>
+            Hello World BIOS
+        </title>
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+    </head>
+    <body>
+        <h4 class="headinfo">
+            <a href="../index.html">Mostafa Abdelaziz</a>
+            <br />
+            525 Bloor St. East,
+            <br />
+            Toronto, ON M4W 1J1
+            <br />
+            +1 (778) 788-0657
+            <br />
+            iocoder@aol.com
+            <br />
+        </h4>
+        <h4 class="date">
+            Aug 30th, 2013
+        </h4>
+        <h1 class="title">
+            Hello World BIOS
+        </h1>
+        <p>
+            Some night (Summer 2013, I was freshman in CSED)
+            while I was sleeping, I dreamed that I
+            wrote a BIOS and managed to run it on a computer
+            (perhaps my PC)...
+            Next morning I decided to make it real. So I wrote
+            this small BIOS that just prints "I am BIOS!" on screen.
+        </p>
+        <p>
+            Actually, it was not really easy to achieve this.
+            I had to learn about a lot of details that the PC BIOS
+            hides from systems programmers. The Hello World BIOS
+            consisted of 2 parts: Protected Mode Code and VGA
+            driver. The VGA driver initializes the VGA and brings it
+            into a functional text mode with 80x25 chars. This
+            was my first direct interaction with the VGA hardware
+            and registers. It was interesting when it finally worked!
+            Here is a screenshot from QEMU ($ qemu -bios bios.bin):
+        </p>
+        <p style="text-align: center">
+            <img src="../img/bios.png" />
+        </p>
+        <h2>Downloads</h2>
+        <ul>
+            <li>
+            <a href="../tar/bios.tar.gz">Source code</a>
+            (<a href="http://www.gnu.org/licenses/gpl-3.0.txt"
+                target="_blank">GPL3</a>)
+            </li>
+        </ul>
+    </body>
+</html>
+

@@ -1,0 +1,531 @@
+<html>
+    <head>
+        <title>
+            T-DEC/102
+        </title>
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+    </head>
+    <body>
+        <h4 class="headinfo">
+            <a href="../index.html">Mostafa Abdelaziz</a>
+            <br />
+            525 Bloor St. East,
+            <br />
+            Toronto, ON M4W 1J1
+            <br />
+            +1 (778) 788-0657
+            <br />
+            iocoder@aol.com
+            <br />
+        </h4>
+        <h4 class="date">
+            Mar 31st, 2014
+        </h4>
+        <h1 class="title">
+            Simulated Computer Design using TTL, T-DEC/102
+        </h1>
+        <p>
+            T-DEC/102 is a simulated computer project. T-DEC stands
+            for <B>Turing-Digital Electronic Computer</B>.  I selected
+            this name in memory of
+            <a href="http://en.wikipedia.org/wiki/Alan_Turing"
+               target="_blank">Alan Turing</a>, the father of
+            <a href="http://en.wikipedia.org/wiki/Computer_science"
+               target="_blank">computer science</a> and
+            <a href="http://en.wikipedia.org/wiki/Artificial_Intelligence"
+               target="_blank">artificial intelligence</a>. 
+            The number 102 is the result of
+            subtracting 1912 (the year when Alan
+            Turing was born) from 2014 (the year when this project was done).
+        </p>
+        <p>
+            T-DEC/102 was built with TTL chips on Proteus. I chose TTL to have
+            the feeling that people who designed
+            <a
+            href="http://en.wikipedia.org/wiki/Digital_Equipment_Corporation"
+               target="_blank">DEC</a>
+            <a href="http://en.wikipedia.org/wiki/VAX"
+               target="_blank">VAX</a> and such systems
+            had :D As you can see,
+            it is a simulated machine; I used Proteus to design and
+            simulate T-DEC.
+        </p>
+        <p>
+            The project was finished in March 2014, just before
+            my forth semester in CSED started.
+        </p>
+        <h2>Technical details</h2>
+        <p>
+            T-DEC/102 consists of the following components:
+        </p>
+        <ul>
+            <li><p>
+            The processor, which has eight 8-bit registers
+            (named R0-->R7), a 16-bit address bus, an 8-bit data bus,
+            an 8-function 8-bit ALU, and a
+            <a href="http://en.wikipedia.org/wiki/Microcode"
+               target="_blank">microprogrammed</a>
+            control unit. The microprogram consists of 128 micro-operations.
+            A micro-assembler was written in C to compile the microcode.
+            </p></li>
+            <li><p>
+            2KB SRAM.
+            </p></li>
+            <li><p>
+            3-to-8 address decoder.
+            </p></li>
+            <li><p>
+            Two
+            <a href="http://en.wikipedia.org/wiki/Intel_8255"
+               target="_blank">8255</a>
+            Programmable Peripheral Interface (PPI)
+            chips to interface a keypad and 8 seven-segment LEDs.
+            </p></li>
+            <li><p>
+            The operating system, which was written in T-DEC/102
+            assembly language, and was installed on a ROM chip.
+            An assembler was written in C to compile the OS. The OS
+            contains a calculator program, which takes inputs from
+            the keypad, and outputs results to the seven-segment LEDs.
+            It also contains device drivers for the PPIs, the keypad,
+            and the seven-segment LEDs.
+            </p></li>
+        </ul>
+        <h2>T-DEC/102 instruction set architecture</h2>
+        <p>
+            The first step in the project was to design the macro
+            architecture. T-DEC would be mainly used for doing math
+            (ADD, SUB, etc...). I tried to reduce the ISA as
+            much as I could in order to minimize TTL logic.
+        </p>
+        <p>
+            In the final design, I came up with 10 different instruction
+            formats:
+        </p>
+        <table border align="center"
+               style="text-align:center; cell-padding: 10 10 10 10;">
+            <tr>
+                <th width="19%">Instruction Class</th>
+                <th width="17%">Addressing<br />Mode</th>
+                <th width="27%">BYTE0</th>
+                <th width="20%">BYTE1</th>
+                <th>BYTE2</th>
+            </tr>
+            <tr>
+                <td rowspan="2">Branch Instructions</td>
+                <td>Absolute</td>
+                <td>
+                Bits 5-0: CONDCODE<br />
+                Bits 7-6: 00
+                </td>
+                <td>Address Low</td>
+                <td>Address High</td>
+            </tr>
+            <tr>
+                <td>Register Indirect</td>
+                <td>
+                Bits 5-0: CONDCODE<br />
+                Bits 7-6: 01
+                </td>
+                <td>
+                Bits 3-0: REG1<br />
+                Bits 7-4: REG2
+                </td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td rowspan="3">Load Instructions</td>
+                <td>Immediate</td>
+                <td>
+                Bits 3-0: REG<br />
+                Bits 7-4: 1000
+                </td>
+                <td>
+                VAL
+                </td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>Absolute</td>
+                <td>
+                Bits 3-0: REG<br />
+                Bits 7-4: 1001
+                </td>
+                <td>
+                Address Low
+                </td>
+                <td>Address High</td>
+            </tr>
+            <tr>
+                <td>Register Indirect</td>
+                <td>
+                Bits 3-0: REG<br />
+                Bits 7-4: 1010
+                </td>
+                <td>
+                Bits 3-0: REG1<br />
+                Bits 7-4: REG2
+                </td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td rowspan="2">Store Instructions</td>
+                <td>Absolute</td>
+                <td>
+                Bits 3-0: REG<br />
+                Bits 7-4: 1011
+                </td>
+                <td>
+                Address Low
+                </td>
+                <td>Address High</td>
+            </tr>
+            <tr>
+                <td>Register Indirect</td>
+                <td>
+                Bits 3-0: REG<br />
+                Bits 7-4: 1100
+                </td>
+                <td>
+                Bits 3-0: REG1<br />
+                Bits 7-4: REG2
+                </td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>Reg-Reg Transfer Instructions</td>
+                <td>Register Direct</td>
+                <td>
+                Bits 3-0: 0000<br />
+                Bits 7-4: 1101
+                </td>
+                <td>
+                Bits 3-0: REG1<br />
+                Bits 7-4: REG2
+                </td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td rowspan="2">ALU Instructions</td>
+                <td>Immediate</td>
+                <td>
+                Bits 3-0: ALUOP<br />
+                Bits 7-4: 1110
+                </td>
+                <td>
+                VAL
+                </td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>Register Direct</td>
+                <td>
+                Bits 3-0: ALUOP<br />
+                Bits 7-4: 1111
+                </td>
+                <td>
+                Bits 3-0: REG1<br />
+                Bits 7-4: REG2
+                </td>
+                <td>-</td>
+            </tr>
+        </table>
+        <p>As you can see, the highest 4 bits of BYTE0
+        can be used to identify the instruction format and
+        decode the instruction. For example, if they
+        are 01xx, then it is obviously a branch instruction
+        in register-indirect addressing mode. On the other hands,
+        It is a store instruction in absolute addressing mode
+        if the bits are 1011.
+        </p>
+        <p>T-DEC/102 is little endian. Thus BYTE0 is fetched
+        before BYTE1 and BYTE2. ALUOP is signaled to the ALU unit during
+        the execution phase of ALU instructions. It simply indicates
+        which ALU operation should be activated. CONCODE indicates
+        the conditions that must be met so that the branch
+        instruction modifies the value of PC.
+        </p>
+        <h2>Implementation</h2>
+        <p>
+            The second step of the project was to implement the ISA
+            using TTL chips. I started with the architectural register
+            file, which looked like this in the final design:
+        </p>
+        <p style="text-align:center">
+            <a href="../img/31_regfile.png">
+            <img src="../img/31_regfile.png" width="800px" /></a>
+            <BR />
+            R0-->R7 (click on the image for full size)
+        </p>
+        <p>
+            I then designed the data path of the processor, and
+            the internal registers (IR, MAR, Flags, ...)
+        </p>
+        <p style="text-align:center">
+            <a href="../img/30_registers.png">
+            <img src="../img/30_registers.png" width="800px" /></a>
+            <BR />
+            Internal registers and datapath (click on the image for full size)
+        </p>
+        <p>
+            Most registers have READ signals and WRITE signals attached
+            to OE and LE pins. READ signal allows the register to
+            put its data on the data bus (when READ is off, the LS373
+            latches are in tri-state). WRITE signal allows the
+            register to latch the data on the data bus. All these
+            signals are connected to the control unit which controls them.
+        </p>
+        <p>
+            The ALU is pretty simple and doesn't need much explanation:
+        </p>
+        <p style="text-align:center">
+            <a href="../img/40_alu.png">
+            <img src="../img/40_alu.png" width="800px" /></a>
+            <BR />
+            Arithmetic/Logic Unit (click on the image for full size)
+        </p>
+        <p style="text-align:center">
+            <a href="../img/41_add.png">
+            <img src="../img/41_add.png" width="800px" /></a>
+            <BR />
+            ADD circuit (click on the image for full size)
+        </p>
+        <p style="text-align:center">
+            <a href="../img/42_sub.png">
+            <img src="../img/42_sub.png" width="800px" /></a>
+            <BR />
+            SUB circuit (click on the image for full size)
+        </p>
+        <p style="text-align:center">
+            <a href="../img/43_and.png">
+            <img src="../img/43_and.png" width="800px" /></a>
+            <BR />
+            AND circuit (click on the image for full size)
+        </p>
+        <p style="text-align:center">
+            <a href="../img/44_or.png">
+            <img src="../img/44_or.png" width="800px" /></a>
+            <BR />
+            OR circuit (click on the image for full size)
+        </p>
+        <p style="text-align:center">
+            <a href="../img/45_not.png">
+            <img src="../img/45_not.png" width="800px" /></a>
+            <BR />
+            NOT circuit (click on the image for full size)
+        </p>
+        <p style="text-align:center">
+            <a href="../img/46_xor.png">
+            <img src="../img/46_xor.png" width="800px" /></a>
+            <BR />
+            XOR circuit (click on the image for full size)
+        </p>
+        <p style="text-align:center">
+            <a href="../img/47_shl.png">
+            <img src="../img/47_shl.png" width="800px" /></a>
+            <BR />
+            SHL circuit (click on the image for full size)
+        </p>
+        <p style="text-align:center">
+            <a href="../img/48_shr.png">
+            <img src="../img/48_shr.png" width="800px" /></a>
+            <BR />
+            SHR circuit (click on the image for full size)
+        </p>
+        <p>
+            The control unit was very challenging to me because
+            it was my first time to do such thing. The control
+            unit consists of 4 ROMs, 3 latches (to treat
+            the ROM glitches), and a sequencer. The ROMs store
+            the microprogram which is explained below. The outputs
+            of the ROM are the control signals of current
+            micro-operation. The fetched opcode and
+            the flags state are signaled to the control unit as input
+            as they control the flow of the micropogram.
+        </p>
+        <p style="text-align:center">
+            <a href="../img/20_control.png">
+            <img src="../img/20_control.png" width="800px" /></a>
+            <BR />
+            Microprogrammed control unit (click on the image for full size)
+        </p>
+        <p>
+            Obviously, The CPU consited of the control unit, the ALU, and
+            the registers:
+        </p>
+        <p style="text-align:center">
+            <a href="../img/10_cpu.png">
+            <img src="../img/10_cpu.png" width="800px" /></a>
+            <BR />
+            T-DEC CPU (click on the image for full size)
+        </p>
+        <p>
+            As explained above, T-DEC/102 consisted of the CPU, an
+            SRAM, the firmware ROM, two PPIs, keypad, and 8
+            seven-segment LEDs. This is the top-level schematic
+            of the machine:
+        </p>
+        <p style="text-align:center">
+            <a href="../img/00_board.png">
+            <img src="../img/00_board.png" width="800px" /></a>
+            <BR />
+            T-DEC top-level schematic (click on the image for full size)
+        </p>
+        <h2>Microprogramming</h2>
+        <p>
+            The microprogramming part was very interesting. In order
+            to write the microprogram, I had to create the RTL language
+            in which the microprogram would be written. I came up
+            with a pretty simple grammar. Register transfers are written
+            like this:
+        </p>
+        <p style="text-align:center">
+            <img src="../img/micro01.png" />
+        </p>
+        <p>
+            As example, the first line means that MAR0Write and PC0Read
+            signals will be
+            on when this micro-operation is selected by the sequencer.
+            To describe the branches that occur inside the microprogram,
+            I created this simple syntax:
+        </p>
+        <p style="text-align:center">
+            <img src="../img/micro02.png" />
+        </p>
+        <p>
+            I decided to give If statements a higher priority over Goto
+            statements if "If" follows "Goto". Therefore "Goto fetch"
+            will never occur unless if all the immediately-following
+            "If" statements don't meet the conditions. Confusing, right?
+            I just wanted to simplify the code that will
+            translate this microprogram into zeros and ones :D
+        </p>
+        <p>
+            Labels should appear at separate lines. A label must
+            be followed by a colon. Comments start with hashes:
+        </p>
+        <p style="text-align:center">
+            <img src="../img/micro03.png" />
+        </p>
+        <p>
+            I ended up with 128 micro-operations. I wrote a simple
+            micro-assembler in C to translate the microprogram
+            into binary. The microassembler works
+            in two passes to solve the forward references.
+            I then configured Proteus to load the compiled microcode
+            onto the four ROMs. Of course, things didn't work out of
+            the blue. There was a lot of debugging on all levels:
+            the hardware logic, the microprogram, the microassembler,
+            the assembler, and the OS.
+        </p>
+        <h2>T-DEC/102 Assembler</h2>
+        <p>
+            T-DEC/102 assembly is pretty easy. All instructions
+            have two operands and are written in this form: "MNEMONIC
+            OPERAND1, OPERAND2".  ADD, SUB, MOV,
+            and JZ (Jump if zero flag on) are examples for valid mnemonics.
+            Each operand maybe an immediate, a register, a memory address,
+            a label, or two registers used as memory address
+            (MOV R0, [R1:R2] ; Address stored in both R1 and R2).
+        </p>
+        <p>
+            To achieve flexible, the programmer doesn't have to care about
+            the details of ISA (like instruction classes).
+            MOV R6, R7 and MOV R6, [0x100] may seem to you as if they
+            are the same instruction with different addressing modes. But
+            actually, they are totally different instructions (see the
+            instruction set architecture section above). The assembler
+            identifies the instruction class using a lookup table:
+        </p>
+        <p style="text-align:center">
+            <img src="../img/asm.png" />
+        </p>
+        <p>
+            The assembler is used to compile the OS. It generates
+            a binary file that contains a T-DEC/102 executable
+            program which is to be loaded on the firmware ROM.
+            When T-DEC/102 is powered on, it fetches
+            and executes the instructions from the firmware ROM
+            through the external system bus.
+        </p>
+        <h2>Operating System</h2>
+        <p>
+            This is the highest level of the project. The firmware ROM
+            appears at 0x0000 memory address, so I adjusted the OS to that
+            region. When T-DEC is powered on, PC is 0x0000. The OS
+            bootloader is automatically executed and it goes
+            into the following sequence:
+        </p>
+        <ol>
+            <li><p>
+                Initialize R0-->R5 registers with zeros.
+            </p></li>
+            <li><p>
+                R6 and R7 are used as a stack pointer for the call stack
+                of the operating system. I give them an initial value.
+            </p></li>
+            <li><p>
+                Initialize the PPIs. CALL() is a macro that pushes current
+                PC to the stack and then jumps to the desired routine.
+                I used the awsome
+                <a href="http://www.gnu.org/software/m4/"
+                   target="_blank">GNU M4</a>
+                macroprocessor for manipulating these macros.
+            </p></li>
+            <li><p>
+                Two 32-bit words of the SRAM are called "accumulator", and
+                "operand". They are used by the calculator program. The OS
+                initializes them to zero.
+            </p></li>
+            <li><p>
+                The OS then updates the seven-sgement LEDs so that the
+                accumulator and the operand are shown on them.
+            </p></li>
+            <li><p>
+                The calculator is finally executed and it takes control.
+                It keeps reading the inputs from the keyboard driver
+                and appends it to "operand".
+                When "+" or "-" is hit, the operand is added to/subtracted
+                from the accumulator. When "=" is pressed, the operand is
+                copied to the accumulator.
+                The calculator keeps updating the
+                LEDs on every key press.
+            </p></li>
+        </ol>
+        <p style="text-align:center">
+            <img src="../img/init.png" />
+            <BR />
+            Initialization sequence.
+        </p>
+        <p>
+            It was exciting to see my assembly code assembled by
+            an assembler of my own, and executed by a machine of my
+            design :)
+            The experience made me aware of a lot of technical
+            details about what happens inside the computer.
+            It shows you how hardware and software interact together
+            and how they cooperate.
+        </p>
+        <h2>Sample run</h2>
+        <p>
+            Here is a screenshot of a sample run. The number in blue is
+            actually the accumulator. The other number is the operand.
+            The calculator program is running and waiting for a key press.
+        </p>
+        <p style="text-align:center">
+            <a href="../img/sample.png">
+            <img src="../img/sample.png" width="800px" /></a>
+            <BR />
+            Sample run (click on the image for full size)
+        </p>
+        <h2>Sources</h2>
+        <ul>
+            <li>
+            Download all the sources
+            from <a href="../tar/tdec-102.tar.gz">here</a>
+            (<a href="http://www.gnu.org/licenses/gpl-3.0.txt"
+                target="_blank">GPL3</a>).
+            </li>
+        </ul>
+    </body>
+</html>

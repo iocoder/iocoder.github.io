@@ -1,0 +1,359 @@
+<html>
+    <head>
+        <title>
+            Static RAM in MOSFETs
+        </title>
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+    </head>
+    <body>
+        <h4 class="headinfo">
+            <a href="../index.html">Mostafa Abdelaziz</a>
+            <br />
+            525 Bloor St. East,
+            <br />
+            Toronto, ON M4W 1J1
+            <br />
+            +1 (778) 788-0657
+            <br />
+            iocoder@aol.com
+            <br />
+        </h4>
+        <h4 class="date">
+            Feb 27th, 2014
+        </h4>
+        <h1 class="title">
+            Static RAM in MOSFETs
+        </h1>
+        <p>
+            <a href="http://en.wikipedia.org/wiki/RAM" target="_blank"
+            >Random Access Memory</a> (RAM) is one of the fundamental
+            components of computers. It is used to store program's
+            temporary data during computer runtime.
+            Furthermore, RAM is usually
+            used to store the program itself besides the data in
+            <a href="http://en.wikipedia.org/wiki/Stored-program_computer"
+               target="_blank">stored-program computers</a>
+            with
+            <a href="http://en.wikipedia.org/wiki/Von_Neumann_architecture"
+               target="_blank">Von Neumann architecture</a>.
+        </p>
+        <p>
+            Modern RAM is made of
+            <a href="http://en.wikipedia.org/wiki/Semiconductor"
+               target="_blank">semiconductors</a> such as
+            <a href="http://en.wikipedia.org/wiki/Transistor"
+               target="_blank">transistors</a> and
+            <a href="http://en.wikipedia.org/wiki/Metal-oxide-semiconductor"
+               target="_blank">MOS</a>
+            <a href="http://en.wikipedia.org/wiki/Capacitor"
+               target="_blank">capacitors</a> and take the form of
+            <a href="http://en.wikipedia.org/wiki/Integrated_Circuit"
+               target="_blank">integrated circuits</a>. We used
+            to classify the semiconductor RAMs into 2 types:
+            <ul>
+                <li>
+                <a
+                href="http://en.wikipedia.org/wiki/Static_random-access_memory"
+                   target="_blank">Static RAM</a> (SRAM): Transistors
+                are organized as a typical
+                <a href="http://en.wikipedia.org/wiki/Flip-flop_(electronics)"
+                   target="_blank">flip flop</a>
+                in a memory cell.
+                </li>
+                <li>
+                <a href="http://en.wikipedia.org/wiki/DRAM"
+                   target="_blank">Dynamic RAM</a> (DRAM): Capacitors are
+                used to store data. Only one transistor and a capacitor are
+                needed
+                to store one bit. Therefore it is less expensive and widely
+                used
+                (example: The PC!). One disadvantage is that DRAM needs
+                to be refreshed periodically because the capacitors lose
+                their data after a little time due to current leaks.
+                </li>
+            </ul>
+        </p>
+        <p>
+            In order to gain deep understanding of how
+            semiconductor RAMs are organized
+            and how they work from the inside, I, along with a group of
+            hardworker students at CSED, decided to create a static RAM with
+            discrete MOSFETs. We submitted this project for EE 236
+            (Electronics) course and it got the highest ranking among
+            the class.
+        </p>
+        <h2>Phase 1: CAD and Simulation</h2>
+        <p>
+            We simulated two models:
+        </p>
+        <ul>
+            <li><p>
+                <b>Model A</b>:
+                Each memory cell is made of a typical S-R
+                latch. The latch consisted of two cross-coupled
+                inverters and two access transistors.
+            </p></li>
+            <li><p>
+                <b>Model B:</b>
+                Each memory cell is made of a typical
+                6T CMOS memory cell and the bitslice is organized
+                in the same manner of VLSI RAMs but
+                with discrete MOSFETs instead.
+            </p></li>
+        </ul>
+        <h3>Model A</h3>
+        <p>
+            This one was easy to understand because it was direct
+            application to what we had studied in both Electronics and
+            Digital Systems courses.
+            We used Proteus to design and simulate this model.
+            The structural unit for this
+            model was the CMOS AND, OR and NOT gates:
+        </p>
+        <p style="text-align:center">
+            <a href="../img/and_gate.png">
+            <img src="../img/and_gate.png" width="800px" /></a>
+            <BR />
+            CMOS AND gate (click on the image to enlarge)
+        </p>
+        <p style="text-align:center">
+            <a href="../img/or_gate.png">
+            <img src="../img/or_gate.png" width="800px" /></a>
+            <BR />
+            CMOS OR gate (click on the image to enlarge)
+        </p>
+        <p style="text-align:center">
+            <a href="../img/inverter2.png">
+            <img src="../img/inverter2.png" width="800px" /></a>
+            <BR />
+            CMOS NOT gate (click on the image to enlarge)
+        </p>
+        <p>
+            We have also created a tristate buffer with
+            to be used to bring the outputs of the RAM to high impedence
+            CE or OE are off:
+        </p>
+        <p style="text-align:center">
+            <a href="../img/tristate.png">
+            <img src="../img/tristate.png" width="800px" /></a>
+            <BR />
+            Tristate buffer (click on the image to enlarge)
+        </p>
+        <p>
+            As explained above, the S-R latch for this model
+            is typically two cross-couples inverters with two access
+            transistors:
+        </p>
+        <p style="text-align:center">
+            <a href="../img/sr_latch.png">
+            <img src="../img/sr_latch.png" width="800px" /></a>
+            <BR />
+            The S-R latch (click on the image to enlarge)
+        </p>
+        <p>
+            The memory cell consists of the S-R latch and
+            enable/disable logic circuit for input and output
+            (a gated S-R latch):
+        </p>
+        <p style="text-align:center">
+            <a href="../img/gated_sr_latch.png">
+            <img src="../img/gated_sr_latch.png" width="800px" /></a>
+            <BR />
+            The memory cell (click on the image to enlarge)
+        </p>
+        <p>
+            The bit-slice can be simply constructed from
+            those gated S-R latches as described in chapter 12 of
+            "Principles of Computer Hardware":
+        </p>
+        <p style="text-align:center">
+            <a href="../img/bitslice3.png">
+            <img src="../img/bitslice3.png" width="800px" /></a>
+            <BR />
+            Bitslice of 8 cells (click on the image to enlarge)
+        </p>
+        <p>
+            A decoder was made to decode the address. The design
+            of such CMOS decoders is well explained by Sedra:
+        </p>
+        <p style="text-align:center">
+            <a href="../img/decoder3.png">
+            <img src="../img/decoder3.png" width="800px" /></a>
+            <BR />
+            3-to-8 decoder (click on the image to enlarge)
+        </p>
+        <p>
+            By connecting the decoder to a bitslice, we had a
+            working 8-bit RAM. More bitslices can be added up
+            easily to enlarge the capacity of the RAM and
+            widen the word size. Unfortunately,
+            We couldn't add any more bitslices as simulation
+            needed very high processing power.
+        </p>
+        <p style="text-align:center">
+            <a href="../img/ram.png">
+            <img src="../img/ram.png" width="800px" /></a>
+            <BR />
+            The RAM (click on the image to enlarge)
+        </p>
+        <p>
+            We tested the design and it worked as expected (after
+            some debugging). Finally, we encapsulated the design into
+            this little black box:
+        </p>
+        <p style="text-align:center">
+            <a href="../img/block2.png">
+            <img src="../img/block2.png" width="800px" /></a>
+            <BR />
+            The RAM chip! (click on the image to enlarge)
+        </p>
+        <h3>Model B</h3>
+        <p>
+            The structural unit for this model was a typical 6T CMOS
+            memory cell which is well explained in Sedra. We used
+            Multisim to design and simulate this model. We spent
+            a lot of time debugging and testing this model at
+            Engineers' Club in Saba Basha, Alexandria.
+        </p>
+        <p>
+            Because the discrete transistors that we used had different
+            characteristics from CMOS transistors on VLSI chips, we had
+            to make a unit which we called (access transistor). The
+            access transistor unit consisted of two NMOS transistors connected
+            as shown below. This access transistor lets the current
+            passes between S and D when the gate is
+            high (no matter what the voltages on S and D are).
+        </p>
+        <p style="text-align:center">
+            <img src="../img/access_tran.png" />
+            <BR />
+            Access transistor
+        </p>
+        <p>
+            We then made the CMOS inverter that would be used
+            to build the memory cell:
+        </p>
+        <p style="text-align:center">
+            <a href="../img/inverter1.png">
+            <img src="../img/inverter1.png" width="600" /></a>
+            <BR />
+            CMOS inverter (click on the image to enlarge)
+        </p>
+        <p>
+            By connecting two cross-coupled inverters with
+            the access transistors, we obtained a typical 6T memory cell.
+            Notice that this cell is different from the memory cell
+            in model A. If wordline is high, the transistor will be
+            connected to the bitlines for read/write operations.
+        </p>
+        <p style="text-align:center">
+            <a href="../img/memcell1.png">
+            <img src="../img/memcell1.png" width="600" /></a>
+            <BR />
+            Memory Cell (click on the image to enlarge)
+        </p>
+        <p>
+            Memory cells were organized together to make a bitslice:
+        </p>
+        <p style="text-align:center">
+            <a href="../img/bitslice2.png">
+            <img src="../img/bitslice2.png" width="800" /></a>
+            <BR />
+            Bitslice (click on the image to enlarge)
+        </p>
+        <p>
+            The bitslice had a bitline conditioning circuitry to
+            precharge the bitlines with high voltage before reads:
+        </p>
+        <p style="text-align:center">
+            <a href="../img/bitline_conditioning.png">
+            <img src="../img/bitline_conditioning.png" width="600" /></a>
+            <BR />
+            Bitline conditioning circuit (click on the image to enlarge)
+        </p>
+        <p>
+            We also made a decoder, just like Model A:
+        </p>
+        <p style="text-align:center">
+            <a href="../img/decoder1.png">
+            <img src="../img/decoder1.png" width="600" /></a>
+            <BR />
+            CMOS decoder (click on the image to enlarge)
+        </p>
+        <p>
+            Finally, we connected the bitslice with the decoder
+            to obtain the RAM:
+        </p>
+        <p style="text-align:center">
+            <a href="../img/block_tot.png">
+            <img src="../img/block_tot.png" width="600" /></a>
+            <BR />
+            The RAM (click on the image to enlarge)
+        </p>
+        <h2>Phase 2: Realization</h2>
+        <p>
+            Realizing a big RAM in MOSFETs needs too many
+            transistors and too much work, so we settled for a
+            physical RAM with two flip flops and a decoder (all in
+            MOSFETs of course). We used Eagle to design the PCB boards.
+        </p>
+        <p style="text-align:center">
+            <a href="../img/decoder4.png">
+            <img src="../img/decoder4.png" width="600" /></a>
+            <BR />
+            The decoder design (click on the image to enlarge)
+        </p>
+        <p style="text-align:center">
+            <img src="../img/decoder_pcb.png" />
+            <BR />
+            The decoder PCB
+        </p>
+        <p>
+            Unfortunately, I don't have photos for the decoder board
+            but I have got some photos for the flip flop PCB:
+        </p>
+        <p style="text-align:center">
+            <a href="../img/pcb1.jpg">
+            <img src="../img/pcb1.jpg" width="400" /></a>
+        </p>
+        <p style="text-align:center">
+            <a href="../img/pcb2.jpg">
+            <img src="../img/pcb2.jpg" width="400" /></a>
+        </p>
+        <p>
+            The other flip flop was realized on a breadboard:
+        </p>
+        <p style="text-align:center">
+            <a href="../img/bb1.jpg">
+            <img src="../img/bb1.jpg" width="400" /></a>
+        </p>
+        <p style="text-align:center">
+            <a href="../img/bb2.jpg">
+            <img src="../img/bb2.jpg" width="400" /></a>
+        </p>
+        <p>
+            It's amazing how our
+            flip-flop "memorizes" its state and how
+            it can be switched between ON and OFF states. The wires
+            to be activated are the S and R signals.
+            When S is high and R is low, Q goes high and the
+            LED associated with Q becomes ON. If S is low and R
+            is high, Q goes low and the LED associated with Q` becomes ON
+            (Q becomes OFF).
+            When S and R are both low, the value of Q "remains"
+            in the latest state.
+            This behavior is a typical <b>bistable multivibrator</b>.
+        </p>
+        <h2>Teamwork</h2>
+        <ul>
+            <li>Ebtehal El-Araby</li>
+            <li>Basma Ayman</li>
+            <li>Hanan Ahmad</li>
+            <li>Reham Osama</li>
+            <li>Shaimaa Mousa</li>
+            <li>Mostafa Abd El-Aziz</li>
+            <li>Maha Ibrahim</li>
+            <li>Mai Ibrahim</li>
+        </ul>
+    </body>
+</html>

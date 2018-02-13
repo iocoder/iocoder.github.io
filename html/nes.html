@@ -1,0 +1,196 @@
+<html>
+    <head>
+        <title>
+            NES on FPGA
+        </title>
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+    </head>
+    <body>
+        <h4 class="headinfo">
+            <a href="../index.html">Mostafa Abdelaziz</a>
+            <br />
+            525 Bloor St. East,
+            <br />
+            Toronto, ON M4W 1J1
+            <br />
+            +1 (778) 788-0657
+            <br />
+            iocoder@aol.com
+            <br />
+        </h4>
+        <h4 class="date">
+            Sep 3rd, 2014
+        </h4>
+        <h1 class="title">
+            NES Simulator
+        </h1>
+        <p>
+            In this project, a
+            <a href="http://en.wikipedia.org/wiki/NES"
+               target="_blank">Nintendo Entertainment System</a>
+            clone is implemented in VHDL and uploaded to Nexys 2 board.
+            NES/Famicom is certainly one of the coolest game consoles ever.
+            NES devices, games, and simulators are available everywhere
+            nowadays. It's really enjoyable to see the video games that
+            I used to play in my childhood running on an architecture
+            of my own design. This lets me understand how these games
+            and NES work from the inside. This answers the question
+            "How do these things really work?" that I used to
+            ask myself everytime I used NES in my childhood. BTW I am
+            still playing NES games. I use a NES simulator called
+            <a href="http://nestopia.sourceforge.net/"
+               target="_blank">nestopia</a> on GNU/Linux.
+        </p>
+        <p>
+            Note that I am not the first one to do this. It doesn't
+            add anything to the world, but it adds to my knowledge;
+            This is an enough reason to go ahead on the project.
+        </p>
+        <p>
+            Technically, NES mainly consists of these components:
+        </p>
+        <ul>
+            <li>
+                <a href="http://en.wikipedia.org/wiki/Ricoh"
+                   target="_blank">Ricoh</a>
+                <a href="http://en.wikipedia.org/wiki/Ricoh_2A03"
+                   target="_blank">RP2A03</a> chip, which contains
+                a second-sourced
+                <a href="http://en.wikipedia.org/wiki/MOS_Technology_6502"
+                   target="_blank">6502</a> processor, the APU (audio
+                processing unit), DMA controller, and game controller
+                logic.
+            </li>
+            <li>
+                Ricoh
+                <a href="http://en.wikipedia.org/wiki/Picture_Processing_Unit"
+                   target="_blank">RP2C02</a> chip, which contains the PPU
+                (picture processing unit), with an internal 256-byte RAM
+                for sprites and an internal 32-byte RAM for color palette.
+            </li>
+            <li>
+                A 2KB RAM for programs.
+            </li>
+            <li>
+                A 2KB RAM for name tables and attribute tables.
+            </li>
+            <li>
+                The game cartridges contain a program ROM, an
+                optional RAM, and a VRAM/VROM to store patterns.
+            </li>
+        </ul>
+        <p>
+            The project is two phases. Phase 1 is to implement a simulator
+            in C. This simulator allowed me to understand the hardware
+            correctly before I start working on the FPGA. Phase 2
+            is to implement the machine in VHDL and get it to work
+            on Nexys 2.
+        </p>
+        <h2>The simulator</h2>
+        <p>
+            I started working on the simulator in July 2014. The first
+            step was to write a 6502 emulator. Debugging the 6502
+            emulator wasn't easy... I had to run some NES games and
+            expect how should they behave, then watch how they
+            actually behave on my emulator (instruction by instruction).
+            There was a little bug in the tax instruction (and her sisters)
+            that drove me crazy for two days until I found it (I forgot
+            to modify the Z and N registers on the termination of tax, and
+            this made the games do very unexpected things xD). It was
+            exciting when the games started to behave correctly using
+            the simulator.
+        </p>
+        <p>
+            Next step was to implement the cartridge logic, a parser
+            for .nes files, memory, etc... The PPU was an important
+            part. I first wrote a PPU that paints the patterns of
+            Contra on screen. It started to behave correctly when
+            I solved the bug issues of the 6502 simulator.
+        </p>
+        <p style="text-align:center">
+            <img src="../img/nessim1.png" width="600px" />
+        </p>
+        <p>
+            Then implemented the name table logic:
+        </p>
+        <p style="text-align:center">
+            <img src="../img/nessim2.png" width="600px" />
+        </p>
+        <p style="text-align:center">
+            <img src="../img/nessim3.png" width="600px" />
+        </p>
+        <p>
+            And then, I implemented the palette logic:
+        </p>
+        <p style="text-align:center">
+            <img src="../img/nessim5.png" width="600px" />
+        </p>
+        <p style="text-align:center">
+            <img src="../img/nessim4.png" width="600px" />
+        </p>
+        <p>
+            And finally, the sprites, scrolling, game
+            controller logic, etc...
+        </p>
+        <p style="text-align:center">
+            <img src="../img/nessim6.png" width="600px" />
+        </p>
+        <p style="text-align:center">
+            <img src="../img/nessim7.png" width="600px" />
+        </p>
+        <p>
+            Actually, there are some bugs in the APU and the PPU,
+            but I chose to work on the hardware implementation first,
+            then work on these bugs when I have free time. The
+            main objective from the simulator was to understand
+            the internals of NES before going into the hardware, not
+            to replace nestopia and other simulators. Therefore
+            those bugs are not important now.
+        </p>
+        <h2>Hardware</h2>
+        <p>
+            Working on the 6502 emulator provided me with good
+            knowledge of the details of 6502. This helped me
+            implement my own 6502 clone in VHDL.
+            Details about the processor can be found at the
+            <a href="6502.html">6502 computer on FPGA</a> article.
+        </p>
+        <p>
+            The next step is to work on the PPU, which
+            will be based on the CRT controller of
+            <a href="6502.html">6502
+            computer on FPGA</a>. The project was aborted.
+        </p>
+        <h2>Sources</h2>
+        <ul>
+            <li>
+            <a href="../tar/nessim.tar.gz">
+            The simulator source code</a>
+            (<a href="http://www.gnu.org/licenses/gpl-3.0.txt"
+                target="_blank">GPL3</a>).
+            </li>
+        </ul>
+        <h2>Some links</h2>
+        <ul>
+            <li>
+            <a href="http://fms.komkon.org/EMUL8/NES.html"
+               target="_blank">NES Architecture</a>, simple
+            but contains some mistakes, so be careful.
+            </li>
+            <li>
+            <a href="http://wiki.nesdev.com/w/index.php/Nesdev_Wiki"
+               target="_blank">NESDev wiki</a>, the beautiful NES
+            community.
+            </li>
+            <li><a href="../pdf/mos6500.pdf"
+               target="_blank">MCS6500 microprocessors datasheet</a>.
+            </li>
+            <li>
+            <a href="http://nesdev.com/apu_ref.txt"
+               target="_blank">APU Hardware Reference</a>, pretty
+            awesome document.
+            </li>
+        </ul>
+    </body>
+</html>
+
