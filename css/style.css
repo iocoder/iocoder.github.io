@@ -8,6 +8,7 @@ body {
 
 .date {
     color:       green;
+    text-align:  center;
 }
 
 .title {
@@ -23,4 +24,8 @@ body {
 .figure {
     text-align:  center;
     width:       100%;
+}
+
+iframe[seamless] {
+    border: none;
 }
