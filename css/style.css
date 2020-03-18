@@ -1,5 +1,9 @@
 body {
-    font-size:   14pt;
+    font-family: Monospace;
+}
+
+p {
+    font-size:   11pt;
 }
 
 .headinfo {
