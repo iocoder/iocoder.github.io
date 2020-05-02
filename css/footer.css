@@ -1,0 +1,17 @@
+.body_main {
+   color: #FFFFFF;
+   background-color: #041004;
+   font-family: monospace;
+   font-size: 8pt;
+   font-style: italic;
+   text-align: center;
+}
+
+.span_name {
+   color: #F8FF00;
+}
+
+.a_cc {
+   color: #00D6E3;
+   text-decoration: none;
+}
