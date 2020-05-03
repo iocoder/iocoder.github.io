@@ -1,0 +1,304 @@
+<html>
+   <head>
+      <title>Ramses - Server</title>
+      <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+      <link rel="stylesheet" type="text/css" href="/css/article.css">
+      <base target="_blank">
+   </head>
+   <body class="body_main">
+      <div class="div_header">
+         <iframe class="iframe_bar" src="/html/header.html"></iframe>
+      </div>
+      <div class="div_underlay">
+      </div>
+      <h2 class="text">
+         How does this website work?
+      </h2>
+      <p class="text">
+         This website is made of a collection of HTML, CSS, and images/pdf
+         files that are manually written in
+
+         <a href="https://w.wiki/Pnc">HTML</a>
+
+         (no
+
+         <a href="https://www.youtube.com/watch?v=qc5BTPS2p7k">wix</a>
+
+         involved, lol!). The source code is organized and stored in
+         a git repo on my home server. A mirror is hosted by github,
+         which I use as a remote origin:
+
+         <a href="https://github.com/iocoder/iocoder.github.io"
+         >https://github.com/iocoder/iocoder.github.io</a>.
+      </p>
+      <p class="text">
+         Taking care of the details of
+
+         <a href="https://w.wiki/Pnc">HTML</a>
+
+         and
+
+         <a href="https://w.wiki/Pnd">CSS</a>
+
+         helps me develop a website that can work well on most of HTML2 web
+         browsers, and make sure it is not bloated by unnecessary piles of
+
+         <a href="https://w.wiki/Pne">Javascript</a>
+
+         and hidden content. That being said, this website doesn't have any
+         embedded Javascript/VBScript nor any
+
+         <a href="https://w.wiki/Pnf">client-side</a>
+
+         code. Similarly, all the pages are purely written in the standard
+         markup language (HTML), and no
+
+         <a href="https://w.wiki/Png">server-side</a>
+
+         code is executed (no
+
+         <a href="https://w.wiki/Pni">PHP</a>,
+
+         <a href="https://w.wiki/Pnh">Ruby on Rails</a>,
+
+         etc.) to dynamically generate the web content (i.e. all the content
+         on this website is static).
+      </p>
+      <h2 class="text">
+         Where is this website hosted?
+      </h2>
+      <table class="table_general">
+         <tr>
+            <td>
+               <p class="text">
+                  This website is hosted on my home server. It is
+                  stored under a directory on my disk, and web-server
+                  software is set up to listen to port 80 and port 443.
+                  The domain name
+
+                  <a href="https://ramses.ca">ramses.ca</a>
+
+                  is registered by
+
+                  <a href="https://w.wiki/PnV">Canadian Internet Registration
+                  Authority</a>
+
+                  (CIRA) through an intermediate registrar.
+               </p>
+               <p class="text">
+                  When you type the URL
+
+                  <a href="https://ramses.ca">ramses.ca</a>
+
+                  in your browser's address bar and hit Enter, your browser
+                  makes a
+
+                  <a href="https://w.wiki/EGX">DNS request</a>
+
+                  to resolve the name ramses.ca. The request is passed to my
+
+                  <a href="https://w.wiki/PnU">registrar</a>
+
+                  by the Internet DNS system. Next, my registrar
+                  resolves the name into my IP address. This IP address
+                  is basically the address of my landlord's gateway
+                  router at the basement of our lovely family house. All
+                  HTTP/HTTPS requests that your browser makes are then
+                  delivered to my computer upstairs through a
+
+                  <a href="https://w.wiki/PnT">NAT</a>.
+
+                  By visiting this page, you have just made
+                  a direct access to my home server. Congratulations!
+               </p>
+               <p class="text">
+                  In Layman's terms, when you open my website on your
+                  browser, your browser directly sends a request to my
+                  home computer, and my home computer answers that request
+                  by sending back the required content directly to your
+                  machine. This is basically how the
+
+                  <a href="https://w.wiki/PnX">Internet</a>
+
+                  works.
+               </p>
+            </td>
+            <td>
+               <p class="text">
+                  <a href="/img/server1_origin.jpg">
+                     <img src="/img/server1.jpg" width="350px" />
+                  </a>
+               </p>
+            </td>
+         </tr>
+      </table>
+      <h2 class="text">
+         What are the specs of your machine?
+      </h2>
+      <p class="text">
+         The hardware itself is powerful enough for my use cases. I have
+         built the machine in May 2019 (I was living in Ottawa
+         by that time). I primarily use a
+
+         <a href="https://en.wikichip.org/wiki/intel/core_i9/i9-9900k">Core
+         i9 9900K</a>
+
+         CPU. I have always been impressed by the great performance of this
+         chip. Motherboard is
+
+         <a
+         href="https://www.gigabyte.com/Motherboard/Z390-AORUS-MASTER-rev-10"
+         >Gigabyte Z390 AORUS Master</a>
+
+         which I highly admire! It's an advanced board with artistic design.
+      </p>
+      <p class="text">
+         For the RAM, I use
+
+         <a href="https://www.gskill.com/products/1/165/166/Trident-Z-RGB"
+         >G SKill TridentZ RGB</a> DDR4 units, with a total of 32GB. Most
+         of the time, only 2.5GB is used by the software and the Linux
+         Kernel.
+
+         Finally, for the storage, I use a 1TB
+
+         <a href="https://samsung.com/ca/ssd/">Samsung SSD 970 EVO Plus</a>
+
+         chip. The compilation of high-performance i9 CPU, DDR4 RAM,
+         PCIe, and M.2 SSD leaves me so satisfied with the overall performance
+         of the machine.
+      </p>
+      <a href="/img/srvf.jpg"><img class="figure" src="/img/srv.jpg" /></a>
+      <h2 class="text">
+         This is cool, my friend. What software do you use?
+      </h2>
+      <p class="text">
+         My server primarily runs
+
+         <a href="https://w.wiki/Pno">Centos Linux</a>.
+
+         Yes I am a big fan of
+
+         <a href="https://w.wiki/Pnp">KDE 4</a>
+
+         which looks and feels much better than the ugly
+
+         <a href="https://w.wiki/Pnq">Plasma 5</a> (way too flat!).
+
+         I mean, what is the point of a gui that doesn't provide you
+         with anything except flat squares and flat boxes?! Compare
+         the look of
+
+         <a href="https://w.wiki/D8W">Windows XP</a>
+
+         to
+
+         <a href="https://w.wiki/Pnr">Windows 10</a>.
+
+         What happened to people?!
+      </p>
+      <p class="text">
+         On top of
+
+         <a href="https://w.wiki/Pno">CentOS</a>,
+
+         I run a variety of
+
+         <a href="https://w.wiki/Pnz">HTTP</a>
+
+         servers
+
+         (<a href="https://w.wiki/Pnv">Apache</a>
+
+         and
+
+         <a href="https://w.wiki/Pnw">nginx</a>),
+
+         <a href="https://w.wiki/Pn$">IMAP</a>
+
+          server
+
+         (<a href="https://w.wiki/Po2">Dovecot</a>),
+
+         <a href="https://w.wiki/Po3">SMTP</a>
+
+         server
+
+         (<a href="https://w.wiki/Po5">Postfix</a>),
+
+         <a href="https://w.wiki/Po6">Database</a>
+
+         servers
+
+         (<a href="https://w.wiki/Po7">MySQL</a>
+
+         and
+
+         <a href="https://w.wiki/NRD">Postgres</a>),
+
+         <a href="https://w.wiki/Po8">firewall</a>
+
+         software and
+
+         <a href="https://w.wiki/Po9">iptables</a>,
+
+         configuration and automation tools,
+
+         <a href="https://w.wiki/PoA">TLS/SSL</a>
+
+         utilities, and my own development environment
+
+         (<a href="http://man7.org/linux/man-pages/man1/gcc.1.html">gcc</a>,
+
+         <a href="http://man7.org/linux/man-pages/man1/as.1.html">as</a>,
+
+         <a href="http://man7.org/linux/man-pages/man1/ld.1.html">ld</a>,
+
+         <a href="https://w.wiki/PoB">vim</a>,
+
+         <a href="https://w.wiki/PoE">tmux</a>,
+
+         <a href="https://w.wiki/PoJ">bash</a>,
+
+         <a href="https://w.wiki/PoF">python3</a>,
+
+         <a href="https://w.wiki/PoG">perl</a>,
+
+         <a href="https://w.wiki/PoH">ada</a>,
+
+         <a href="https://w.wiki/PoK">vhdl</a>,
+
+         <a href="https://w.wiki/PoL">qemu</a>,
+
+         <a
+         href="https://www.kernel.org/doc/Documentation/virtual/kvm/api.txt"
+         >kvm</a>,
+
+         and other cool stuff.)
+      </p>
+      <p class="text">
+         Since I have my own mail agents as discussed above, I use
+         my domain
+
+         <a href="https://ramses.ca">ramses.ca</a>
+
+         as a mail server as well. My email account is called 'admin,'
+         feel free to send me emails at
+
+         <a href="mailto:admin@ramses.ca">admin@ramses.ca</a>.
+
+         Your mail agent (GMail, AOL, MS Exchange, etc.) will recognize
+
+         <a href="https://ramses.ca">ramses.ca</a>
+
+         domain and send the email directly to my home machine.
+         I am online 24/7.
+      </p>
+      <a href="/img/centos.png"><img width="100%" src="/img/centos.jpg"/></a>
+      <div class="div_underlay">
+      </div>
+      <div class="div_footer">
+         <iframe class="iframe_bar" src="/html/footer.html"></iframe>
+      </div>
+   </body>
+</html>
