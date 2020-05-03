@@ -1,6 +1,4 @@
 .body_main {
-   font-family: "Courier New";
-   font-size: 10pt;
    padding: 0px;
    margin: 0px;
 }
@@ -42,7 +40,7 @@
 
 .iframe_addr {
    border: none;
-   width: 200px;
+   width: 100%;
    height: 100px;
 }
 
@@ -56,12 +54,13 @@
 
 .table_general {
    border-spacing: 0;
-   font-size: inherit;
    width:100%;
 }
 
 .headinfo {
    text-align: right;
+   margin-top: 20px;
+   margin-right: 20px;
 }
 
 .date {
@@ -79,7 +78,15 @@
    color: blue;
 }
 
+.head2 {
+   font-family: "Courier New";
+   padding-left: 10px;
+   padding-right: 10px;
+}
+
 .text {
+   font-family: "Courier New";
+   font-size: 10pt;
    padding-left: 10px;
    padding-right: 10px;
 }
