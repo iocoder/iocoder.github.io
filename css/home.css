@@ -17,9 +17,27 @@
    height: 60px;
 }
 
+.td_intro {
+   padding-left: 5%;
+   width: 100%;
+   height: 100%;
+   vertical-align: middle;
+   text-align: left;
+   color: yellow;
+   font-family: Times;
+   font-size: 22pt;
+   font-style: italic;
+   font-weight: bold;
+}
+
+.a_intro {
+   color: inherit;
+   text-decoration: none;
+}
+
 .td_earth {
    padding: 0;
-   width: 100%;
+   width: 400px;
    vertical-align: middle;
 }
 
@@ -41,6 +59,10 @@
    height: 60px;
 }
 
-.img_planet {
+.img_earth {
+   width: 400px;
+}
+
+.img_moon {
    width: 100%;
 }
