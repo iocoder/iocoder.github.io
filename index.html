@@ -1,65 +1,76 @@
 <html>
    <head>
       <title>Ramses Nagib</title>
-      <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
-      <link rel="stylesheet" type="text/css" href="/css/home.css">
-      <base target="_blank">
+      <link rel="shortcut icon" type="image/png" href="/img/favicon.png" />
+      <link rel="stylesheet" type="text/css" href="/css/home.css" />
+      <base target="_blank" />
    </head>
-   <body class="body_home">
-      <table class="table_home">
-         <tr>
-            <td class="td_header" colspan="2">
-               <iframe class="iframe_bar" src="/html/header.html"></iframe>
-            </td>
-         </tr>
-         <tr>
-            <td class="td_intro">
-               Hello, I am
-
-               <a class="a_intro" href="https://w.wiki/PqR">Ramses</a>,
-
-               a
-
-               <a class="a_intro" href="https://w.wiki/PqS">Computer
-               Engineer</a>
-
-               from
-
-               <a class="a_intro" href="https://w.wiki/PqT">Montr&#233;al</a>.
-
-               I am interested in
-
-               <a class="a_intro" href="https://w.wiki/PqU">Theoretical
-               Computer Science</a>,
-
-               Cultures and Beliefs of
-
-               <a class="a_intro" href="https://w.wiki/PqW">Near East
-               Civilizations</a>,
-
-               <a class="a_intro" href="https://w.wiki/PqV">Anthropology</a>,
-
-               <a class="a_intro" href="https://w.wiki/PqX">History</a>,
-
-               and
-
-               <a class="a_intro" href="https://w.wiki/PqY">Academic
-               Egyptology</a>.
-            </td>
-            <td class="td_earth">
-               <img class="img_earth" src="/img/earth.png" />
-            </td>
-         </tr>
-         <tr>
-            <td class="td_moon" colspan="2">
-               <img class="img_moon" src="/img/moon.png" />
-            </td>
-         </tr>
-         <tr>
-            <td class="td_footer" colspan="2">
-               <iframe class="iframe_bar" src="/html/footer.html"></iframe>
-            </td>
-         </tr>
-      </table>
+   <body>
+      <div id="header">
+         <object data="/html/header.html" type="text/html">
+         </object>
+      </div>
+      <div id="content">
+         <table>
+            <tr>
+               <th>
+                  <span>
+                     Hello, I am
+                  </span>
+                  <a href="https://w.wiki/PqR">
+                     Ramses,
+                  </a>
+                  <span>
+                     a
+                  </span>
+                  <a href="https://w.wiki/PqS">
+                     Computer Engineer
+                  </a>
+                  <span>
+                     from
+                  </span>
+                  <a href="https://w.wiki/PqT">
+                     Montr&#233;al.
+                  </a>
+                  <span>
+                     I am interested in
+                  </span>
+                  <a href="https://w.wiki/PqU">
+                     Theoretical Computer Science,
+                  </a>
+                  <span>
+                     Cultures and Beliefs of
+                  </span>
+                  <a href="https://w.wiki/PqW">
+                     Near East Civilizations,
+                  </a>
+                  <a href="https://w.wiki/PqV">
+                     Anthropology,
+                  </a>
+                  <a href="https://w.wiki/PqX">
+                     History,
+                  </a>
+                  <span>
+                     and
+                  </span>
+                  <a href="https://w.wiki/PqY">
+                     Academic Egyptology.
+                  </a>
+               </th>
+               <td>
+                  <img id="earth" src="/img/earth.png" />
+               </td>
+            </tr>
+            <tr>
+               <td colspan="2">
+                  <img id="moon" src="/img/moon.png" />
+               </td>
+            </tr>
+         </table>
+      </div>
+      <div id="footer">
+         <object data="/html/footer.html" type="text/html">
+         </object>
+      </div>
    </body>
 </html>
