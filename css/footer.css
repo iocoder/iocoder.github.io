@@ -1,4 +1,4 @@
-.body_footer {
+body {
    color: #FFFFFF;
    background-color: #041004;
    font-family: monospace;
@@ -7,11 +7,12 @@
    text-align: center;
 }
 
-.span_name {
-   color: #F8FF00;
-}
-
-.a_cc {
+a {
+   display: inline-block;
    color: #00D6E3;
    text-decoration: none;
+}
+
+span.author {
+   color: #F8FF00;
 }

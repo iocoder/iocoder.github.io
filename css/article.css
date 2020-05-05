@@ -1,119 +1,107 @@
-.body_article {
+body {
+   background-color: #FFFFFF;
+   margin-top: 60px;
+   margin-bottom: 60px;
+   margin-left: 0px;
+   margin-right: 0px;
    padding: 0px;
-   margin: 0px;
 }
 
-.div_header {
+div.header {
    position: fixed;
    top: 0px;
    left: 0px;
-   width: 100%;
+   right: 0px;
    height: 60px;
 }
 
-.div_footer {
+div.address {
+    position: static;
+    width: 100%;
+    height: 100px;
+}
+
+div.footer {
    position: fixed;
    bottom: 0px;
    left: 0px;
-   width: 100%;
-   height: 60px;
-}
-
-.div_pdf {
-   position: fixed;
-   top: 60px;
-   bottom: 60px;
-   left: 0px;
    right: 0px;
-}
-
-.div_underlay {
-   width: 100%;
    height: 60px;
 }
 
-.iframe_bar {
+object {
    border: none;
-   width: 100%;
-   height: 100%;
-}
-
-.iframe_addr {
-   border: none;
-   width: 100%;
-   height: 100px;
-}
-
-.object_pdf {
-   border: none;
-   margin: 0;
    padding: 0;
+   margin:  0;
    width: 100%;
    height: 100%;
 }
 
-.h1_title {
+h1 {
    font-family: "Times";
    color: red;
    font-style: italic;
    text-align: center;
 }
 
-.h1_title_bg {
+h1.light {
    background-color: yellow;
 }
 
-.h2_subtitle {
+h2 {
    font-family: "Courier New";
    padding-left: 10px;
    padding-right: 10px;
 }
 
-.h2_subtitle_bg {
+h2.light {
    background-color: #26FFF2;
    background-clip: content-box;
 }
 
-.h3_subtitle {
+h3 {
    font-family: "Courier New";
    padding-left: 10px;
    padding-right: 10px;
 }
 
-.h3_subtitle_bg {
+h3.light {
    background-color: #26FFF2;
    background-clip: content-box;
 }
 
-.h3_subtitle_bg2 {
+h3.dark {
    background-color: #FFD1D2;
    background-clip: content-box;
 }
 
-.h4_date {
+h4 {
    color: green;
    text-align: center;
 }
 
-.h4_date_bg {
+h4.light {
    color: #FFFFFF;
 }
 
-.p_text {
+p {
    font-family: "Courier New";
-   font-size: 10pt;
+   font-size: 0pt;
    padding-left: 10px;
    padding-right: 10px;
+   padding-top: 5px;
+   padding-bottom: 5px;
    vertical-align: center;
 }
 
-.p_text_bg {
+p.light {
    background-color: #D0FFBA;
    background-clip: content-box;
    opacity: 0.95;
    font-weight: bold;
 }
-.p_text_bg2 {
+
+p.dark {
    color: white;
    background-color: #133E00;
    background-clip: content-box;
@@ -121,23 +109,31 @@
    font-weight: bold;
 }
 
-.table_news {
+p span {
+   font-size: 10pt;
+}
+
+p br {
+   font-size: 10pt;
+}
+
+a span {
+   font-size: 10pt;
+}
+
+table {
    padding-left: 10px;
    padding-right: 10px;
    border-spacing: 0;
    width:100%;
 }
 
-.table_news_bg {
+table.light {
    opacity: 0.95;
    font-weight: bold;
 }
 
-.a_figure {
-   display: block;
-}
-
-.img_figure {
+img {
    text-align: center;
    width: 100%;
 }
