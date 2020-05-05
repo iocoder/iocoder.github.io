@@ -1,4 +1,4 @@
-.body_main {
+.body_article {
    padding: 0px;
    margin: 0px;
 }
@@ -44,7 +44,7 @@
    height: 100px;
 }
 
-.obj_pdf {
+.object_pdf {
    border: none;
    margin: 0;
    padding: 0;
@@ -52,46 +52,92 @@
    height: 100%;
 }
 
-.table_general {
-   border-spacing: 0;
-   width:100%;
-}
-
-.headinfo {
-   text-align: right;
-   margin-top: 20px;
-   margin-right: 20px;
-}
-
-.date {
-   color: green;
-   text-align: center;
-}
-
-.title {
+.h1_title {
+   font-family: "Times";
    color: red;
    font-style: italic;
    text-align: center;
 }
 
-.subtitle {
-   color: blue;
+.h1_title_bg {
+   background-color: yellow;
 }
 
-.head2 {
+.h2_subtitle {
    font-family: "Courier New";
    padding-left: 10px;
    padding-right: 10px;
 }
 
-.text {
+.h2_subtitle_bg {
+   background-color: #26FFF2;
+   background-clip: content-box;
+}
+
+.h3_subtitle {
+   font-family: "Courier New";
+   padding-left: 10px;
+   padding-right: 10px;
+}
+
+.h3_subtitle_bg {
+   background-color: #26FFF2;
+   background-clip: content-box;
+}
+
+.h3_subtitle_bg2 {
+   background-color: #FFD1D2;
+   background-clip: content-box;
+}
+
+.h4_date {
+   color: green;
+   text-align: center;
+}
+
+.h4_date_bg {
+   color: #FFFFFF;
+}
+
+.p_text {
    font-family: "Courier New";
    font-size: 10pt;
    padding-left: 10px;
    padding-right: 10px;
+   vertical-align: center;
 }
 
-.figure {
+.p_text_bg {
+   background-color: #D0FFBA;
+   background-clip: content-box;
+   opacity: 0.95;
+   font-weight: bold;
+}
+.p_text_bg2 {
+   color: white;
+   background-color: #133E00;
+   background-clip: content-box;
+   opacity: 0.95;
+   font-weight: bold;
+}
+
+.table_news {
+   padding-left: 10px;
+   padding-right: 10px;
+   border-spacing: 0;
+   width:100%;
+}
+
+.table_news_bg {
+   opacity: 0.95;
+   font-weight: bold;
+}
+
+.a_figure {
+   display: block;
+}
+
+.img_figure {
    text-align: center;
    width: 100%;
 }

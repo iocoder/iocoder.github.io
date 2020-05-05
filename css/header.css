@@ -1,11 +1,11 @@
-.body_main {
+.body_header {
    background-color: #03324A;
    font-family: monospace;
    margin: 0;
    padding: 0;
 }
 
-.table_main {
+.table_header {
    border-spacing: 0;
    font-weight: bold;
    text-align: center;

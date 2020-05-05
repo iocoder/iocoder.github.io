@@ -1,0 +1,25 @@
+.body_address {
+   padding: 0px;
+   margin: 0px;
+}
+
+.p_address {
+   text-align: right;
+   margin-top: 20px;
+   margin-right: 20px;
+}
+
+.a_www {
+   text-decoration: none;
+   color: brown;
+}
+
+.a_mail {
+   text-decoration: none;
+   color: blue;
+}
+
+.a_phone {
+   text-decoration: none;
+   color: green;
+}
