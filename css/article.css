@@ -5,6 +5,8 @@ body {
    margin-left: 0px;
    margin-right: 0px;
    padding: 0px;
+   font-size: 0px;
+   text-size-adjust: none;
 }
 
 div.header {
@@ -18,7 +20,7 @@ div.header {
 div.address {
     position: static;
     width: 100%;
-    height: 100px;
+    height: 85px;
 }
 
 div.footer {
@@ -31,16 +33,19 @@ div.footer {
 
 object {
    border: none;
-   padding: 0;
-   margin:  0;
+   padding: 0px;
+   margin: 0px;
    width: 100%;
    height: 100%;
 }
 
 h1 {
-   font-family: "Times";
    color: red;
+   font-family: "Times New Roman";
    font-style: italic;
+   font-size: 32px;
+   padding-left: 0px;
+   padding-right: 0px;
    text-align: center;
 }
 
@@ -49,9 +54,13 @@ h1.light {
 }
 
 h2 {
-   font-family: "Courier New";
+   color: brown;
+   font-family: "Times New Roman";
+   font-size: 24px;
+   font-style: normal;
    padding-left: 10px;
    padding-right: 10px;
+   text-align: left;
 }
 
 h2.light {
@@ -59,78 +68,64 @@ h2.light {
    background-clip: content-box;
 }
 
-h3 {
-   font-family: "Courier New";
-   padding-left: 10px;
-   padding-right: 10px;
-}
-
-h3.light {
-   background-color: #26FFF2;
-   background-clip: content-box;
-}
-
-h3.dark {
+h2.dark {
    background-color: #FFD1D2;
    background-clip: content-box;
 }
 
-h4 {
+h3 {
    color: green;
+   font-family: "Times New Roman";
+   font-size: 18px;
+   font-style: normal;
+   padding-left: 10px;
+   padding-right: 10px;
    text-align: center;
 }
 
-h4.light {
+h3.light {
    color: #FFFFFF;
 }
 
 p {
-   font-family: "Courier New";
-   font-size: 0pt;
+   color: black;
+   font-family: "Arial";
+   font-size: 16px;
+   font-style: normal;
    padding-left: 10px;
    padding-right: 10px;
-   padding-top: 5px;
-   padding-bottom: 5px;
-   vertical-align: center;
+   text-align: left;
 }
 
 p.light {
    background-color: #D0FFBA;
    background-clip: content-box;
-   opacity: 0.95;
-   font-weight: bold;
 }
 
 p.dark {
    color: white;
    background-color: #133E00;
    background-clip: content-box;
-   opacity: 0.95;
-   font-weight: bold;
 }
 
-p span {
-   font-size: 10pt;
+span {
+   color: darkgreen;
 }
 
-p br {
-   font-size: 10pt;
-}
-
-a span {
-   font-size: 10pt;
+a {
+   text-decoration: none;
 }
 
 table {
    padding-left: 10px;
    padding-right: 10px;
+   margin: 0px;
    border-spacing: 0;
    width:100%;
 }
 
-table.light {
+table.opaque {
    opacity: 0.95;
-   font-weight: bold;
 }
 
 img {

@@ -1,8 +1,16 @@
 body {
-   color: #FFFFFF;
    background-color: #041004;
-   font-family: monospace;
-   font-size: 8pt;
+   margin: 0px;
+   padding: 0px;
+   overflow: hidden;
+   text-size-adjust: none;
+}
+
+p {
+   margin: 0px;
+   padding: 0px;
+   font-family: Times;
+   font-size: 10pt;
    font-style: italic;
    text-align: center;
 }
@@ -11,6 +19,10 @@ a {
    display: inline-block;
    color: #00D6E3;
    text-decoration: none;
+}
+
+span.rights {
+   color: #FFFFFF;
 }
 
 span.author {
