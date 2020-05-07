@@ -49,10 +49,6 @@ h1 {
    text-align: center;
 }
 
-h1.light {
-   background-color: yellow;
-}
-
 h2 {
    color: brown;
    font-family: "Times New Roman";
@@ -61,16 +57,6 @@ h2 {
    padding-left: 10px;
    padding-right: 10px;
    text-align: left;
-}
-
-h2.light {
-   background-color: #26FFF2;
-   background-clip: content-box;
-}
-
-h2.dark {
-   background-color: #FFD1D2;
-   background-clip: content-box;
 }
 
 h3 {
@@ -83,11 +69,7 @@ h3 {
    text-align: center;
 }
 
-h3.light {
-   color: #FFFFFF;
-}
-
-p {
+p, li {
    color: black;
    font-family: "Arial";
    font-size: 16px;
@@ -95,17 +77,6 @@ p {
    padding-left: 10px;
    padding-right: 10px;
    text-align: left;
-}
-
-p.light {
-   background-color: #D0FFBA;
-   background-clip: content-box;
-}
-
-p.dark {
-   color: white;
-   background-color: #133E00;
-   background-clip: content-box;
 }
 
 span {
@@ -124,11 +95,10 @@ table {
    width:100%;
 }
 
-table.opaque {
-   opacity: 0.95;
-}
-
 img {
    text-align: center;
+}
+
+img.wide {
    width: 100%;
 }

@@ -1,52 +1,51 @@
 <html>
     <head>
-        <title>
-            T-DEC/102
-        </title>
-        <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <title>Ramses - TTL Computer</title>
+        <meta name="author" content="Ramses Nagib" />
+        <meta name="viewport" content="width=1024" />
+        <link rel="shortcut icon" type="image/png" href="/img/favicon.png" />
+        <link rel="stylesheet" type="text/css" href="/css/article.css" />
+        <base target="_blank" />
     </head>
     <body>
-        <table width="100%">
-            <tr>
-                <td>
-                    <img width="200px" src="../img/flag.jpg" alt="O Canada!" />
-                </td>
-                <td width="200px">
-                    <iframe src="./address.html" seamless></iframe>
-                </td>
-            </tr>
-        </table>
-        <h1 class="title">
-            Simulated Computer Design using TTL, T-DEC/102
-        </h1>
-        <h4 class="date">
-            Mar 31st, 2014
-        </h4>
+        <div class="header">
+            <object data="/html/header.html" type="text/html">
+            </object>
+        </div>
+        <div class="address">
+            <object data="/html/address.html" type="text/html">
+            </object>
+        </div>
+        <h1>Simulated Computer Design using TTL, T-DEC/102</h1>
+        <h3>Mar 31st, 2014</h3>
         <p>
-            T-DEC/102 is a simulated computer project. T-DEC stands
-            for <B>Turing-Digital Electronic Computer</B>.  I selected
-            this name in memory of
-            <a href="http://en.wikipedia.org/wiki/Alan_Turing"
-               target="_blank">Alan Turing</a>, the father of
-            <a href="http://en.wikipedia.org/wiki/Computer_science"
-               target="_blank">computer science</a> and
-            <a href="http://en.wikipedia.org/wiki/Artificial_Intelligence"
-               target="_blank">artificial intelligence</a>.
-            The number 102 is the result of
-            subtracting 1912 (the year when Alan
-            Turing was born) from 2014 (the year when this project was done).
+            T-DEC/102
+            is a simulated computer project.
+            T-DEC
+            stands for
+            <B>Turing-Digital Electronic Computer</B>.
+            I decided to use this name in memory of
+            <a href="http://en.wikipedia.org/wiki/Alan_Turing">Alan Turing</a>,
+            the father of
+            <a href="http://en.wikipedia.org/wiki/Computer_science">Computer Science</a>
+            and
+            <a href="http://en.wikipedia.org/wiki/Artificial_Intelligence">Artificial Intelligence</a>.
+            The number 102 is the result of subtracting 1912
+            (the year when Alan Turing was born)
+            from 2014
+            (the year when this project was done).
         </p>
         <p>
             T-DEC/102 was built with TTL chips on Proteus. I chose TTL to have
             the feeling that people who designed
-            <a
-            href="http://en.wikipedia.org/wiki/Digital_Equipment_Corporation"
-               target="_blank">DEC</a>
-            <a href="http://en.wikipedia.org/wiki/VAX"
-               target="_blank">VAX</a> and such systems
-            had :D As you can see,
-            it is a simulated machine; I used Proteus to design and
-            simulate T-DEC.
+            <a href="http://en.wikipedia.org/wiki/Digital_Equipment_Corporation">DEC</a>
+            <a href="http://en.wikipedia.org/wiki/VAX">VAX</a>
+            (and similar systems)
+            had :D
+            As you can see,
+            it is a simulated machine;
+            I used Proteus to design and simulate
+            T-DEC.
         </p>
         <p>
             The project was finished in March 2014, just before
@@ -57,29 +56,23 @@
             T-DEC/102 consists of the following components:
         </p>
         <ul>
-            <li><p>
+            <li>
             The processor, which has eight 8-bit registers
             (named R0-->R7), a 16-bit address bus, an 8-bit data bus,
             an 8-function 8-bit ALU, and a
-            <a href="http://en.wikipedia.org/wiki/Microcode"
-               target="_blank">microprogrammed</a>
+            <a href="http://en.wikipedia.org/wiki/Microcode">microprogrammed</a>
             control unit. The microprogram consists of 128 micro-operations.
             A micro-assembler was written in C to compile the microcode.
-            </p></li>
-            <li><p>
-            2KB SRAM.
-            </p></li>
-            <li><p>
-            3-to-8 address decoder.
-            </p></li>
-            <li><p>
+            </li>
+            <li>2KB SRAM.</li>
+            <li>3-to-8 address decoder.</li>
+            <li>
             Two
-            <a href="http://en.wikipedia.org/wiki/Intel_8255"
-               target="_blank">8255</a>
+            <a href="http://en.wikipedia.org/wiki/Intel_8255">8255</a>
             Programmable Peripheral Interface (PPI)
             chips to interface a keypad and 8 seven-segment LEDs.
-            </p></li>
-            <li><p>
+            </li>
+            <li>
             The operating system, which was written in T-DEC/102
             assembly language, and was installed on a ROM chip.
             An assembler was written in C to compile the OS. The OS
@@ -87,7 +80,7 @@
             the keypad, and outputs results to the seven-segment LEDs.
             It also contains device drivers for the PPIs, the keypad,
             and the seven-segment LEDs.
-            </p></li>
+            </li>
         </ul>
         <h2>T-DEC/102 instruction set architecture</h2>
         <p>
@@ -100,8 +93,7 @@
             In the final design, I came up with 10 different instruction
             formats:
         </p>
-        <table border align="center"
-               style="text-align:center; cell-padding: 10 10 10 10;">
+        <table border style="text-align:center;">
             <tr>
                 <th width="19%">Instruction Class</th>
                 <th width="17%">Addressing<br />Mode</th>
@@ -228,20 +220,22 @@
                 <td>-</td>
             </tr>
         </table>
-        <p>As you can see, the highest 4 bits of BYTE0
-        can be used to identify the instruction format and
-        decode the instruction. For example, if they
-        are 01xx, then it is obviously a branch instruction
-        in register-indirect addressing mode. On the other hands,
-        It is a store instruction in absolute addressing mode
-        if the bits are 1011.
+        <p>
+            As you can see, the highest 4 bits of BYTE0
+            can be used to identify the instruction format and
+            decode the instruction. For example, if they
+            are 01xx, then it is obviously a branch instruction
+            in register-indirect addressing mode. On the other hands,
+            It is a store instruction in absolute addressing mode
+            if the bits are 1011.
         </p>
-        <p>T-DEC/102 is little endian. Thus BYTE0 is fetched
-        before BYTE1 and BYTE2. ALUOP is signaled to the ALU unit during
-        the execution phase of ALU instructions. It simply indicates
-        which ALU operation should be activated. CONCODE indicates
-        the conditions that must be met so that the branch
-        instruction modifies the value of PC.
+        <p>
+            T-DEC/102 is little endian. Thus BYTE0 is fetched
+            before BYTE1 and BYTE2. ALUOP is signaled to the ALU unit during
+            the execution phase of ALU instructions. It simply indicates
+            which ALU operation should be activated. CONCODE indicates
+            the conditions that must be met so that the branch
+            instruction modifies the value of PC.
         </p>
         <h2>Implementation</h2>
         <p>
@@ -466,8 +460,7 @@
                 Initialize the PPIs. CALL() is a macro that pushes current
                 PC to the stack and then jumps to the desired routine.
                 I used the awsome
-                <a href="http://www.gnu.org/software/m4/"
-                   target="_blank">GNU M4</a>
+                <a href="http://www.gnu.org/software/m4/">GNU M4</a>
                 macroprocessor for manipulating these macros.
             </p></li>
             <li><p>
@@ -521,9 +514,15 @@
             <li>
             Download all the sources
             from <a href="../tar/tdec-102.tar.gz">here</a>
-            (<a href="http://www.gnu.org/licenses/gpl-3.0.txt"
-                target="_blank">GPL3</a>).
+            (<a href="http://www.gnu.org/licenses/gpl-3.0.txt">GPL3</a>).
             </li>
         </ul>
+        <p>
+            <br />
+        </p>
+        <div class="footer">
+            <object data="/html/footer.html" type="text/html">
+            </object>
+        </div>
     </body>
 </html>
