@@ -1,5 +1,6 @@
 body {
    background-color: #FFFFFF;
+   background-attachment: fixed;
    margin-top: 60px;
    margin-bottom: 60px;
    margin-left: 0px;
@@ -44,8 +45,8 @@ h1 {
    font-family: "Times New Roman";
    font-style: italic;
    font-size: 32px;
-   padding-left: 0px;
-   padding-right: 0px;
+   padding-left: 10px;
+   padding-right: 10px;
    text-align: center;
 }
 
@@ -69,36 +70,126 @@ h3 {
    text-align: center;
 }
 
-p, li {
-   color: black;
-   font-family: "Arial";
-   font-size: 16px;
+h4 {
+   color: darkred;
+   font-family: "Times New Roman";
+   font-size: 18px;
    font-style: normal;
    padding-left: 10px;
    padding-right: 10px;
    text-align: left;
 }
 
-span {
-   color: darkgreen;
+p.text {
+   color: black;
+   font-family: "Arial";
+   font-size: 16px;
+   font-weight: normal;
+   font-style: normal;
+   text-decoration: none;
+   text-align: left;
+   padding-left: 10px;
+   padding-right: 10px;
 }
 
-a {
+p.cite {
+   color: black;
+   font-family: "Arial";
+   font-size: 16px;
+   font-weight: normal;
+   font-style: italic;
+   text-decoration: none;
+   text-align: right;
+   padding-left: 10px;
+   padding-right: 10px;
+}
+
+p.quote {
+   color: darkgreen;
+   font-family: "Times New Roman";
+   font-size: 18px;
+   font-weight: normal;
+   font-style: italic;
+   text-decoration: none;
+   text-align: center;
+   padding-left: 10px;
+   padding-right: 10px;
+}
+
+p.subtitle {
+   color: black;
+   font-family: "Arial";
+   font-size: 16px;
+   font-weight: bold;
+   font-style: normal;
+   text-decoration: underline;
+   text-align: left;
+   padding-left: 10px;
+   padding-right: 10px;
+}
+
+p.figure {
+   color: black;
+   font-family: "Arial";
+   font-size: 16px;
+   font-weight: normal;
+   font-style: normal;
+   text-decoration: none;
+   text-align: center;
+   padding-left: 0px;
+   padding-right: 0px;
+}
+
+p.caption {
+   color: black;
+   font-family: "Arial";
+   font-size: 16px;
+   font-weight: normal;
+   font-style: italic;
+   text-decoration: none;
+   text-align: center;
+   padding-left: 0px;
+   padding-right: 0px;
+}
+
+li {
+   color: black;
+   font-family: "Arial";
+   font-size: 16px;
+   font-weight: normal;
+   font-style: italic;
+   text-decoration: none;
+   text-align: left;
+}
+
+ul.bullet {
+   list-style: disc;
+   margin-bottom: 10px;
+}
+ul.toc {
+   list-style: none;
+   margin-bottom: 10px;
+}
+
+ol.decimal {
+   list-style: decimal;
+   margin-bottom: 10px;
+}
+
+a.link {
    text-decoration: none;
 }
 
+a.anchor {
+   display: block;
+   position: relative;
+   top: -65px;
+   visibility: hidden;
+}
+
 table {
-   padding-left: 10px;
-   padding-right: 10px;
+   padding: 0px;
    margin: 0px;
    border-spacing: 0;
-   width:100%;
-}
-
-img {
-   text-align: center;
-}
-
-img.wide {
    width: 100%;
 }

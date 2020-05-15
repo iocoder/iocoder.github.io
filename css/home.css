@@ -43,18 +43,10 @@ p {
    font-size: 28px;
    font-style: italic;
    font-weight: bold;
-}
-
-span {
-   color: #2FEB59;
-}
-
-a.txt {
    color: #FFFF40;
-   text-decoration: none;
 }
 
-a.lnk {
+a {
    color: #80FFFF;
    text-decoration: none;
 }
